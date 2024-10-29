@@ -12,7 +12,7 @@ def calculate_delay(scheduled, actual):
     return ""
 
 input_csv = "extracted_data.csv"
-output_csv = "extracted_data.csv"
+output_csv = "extracted_data_updated.csv"
 
 with open(input_csv, mode="r") as infile, open(output_csv, mode="w", newline="") as outfile:
     reader = csv.DictReader(infile)
