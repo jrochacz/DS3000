@@ -8,6 +8,8 @@ time_stamp = 1730088001
 for i in range(24):
     file_name = f'TripUpdate{time_stamp}.json'
     
+    print(f"{i+1}. Extracting data from: {file_name}")
+    
     with open(file_name, 'r') as file:
         data = json.load(file)
         
@@ -37,7 +39,7 @@ for i in range(24):
                     scheduled_time = None
                     actual_time = None
                 
-                if actual_time and time_stamp <= actual_time < time_stamp + 3600:
+                if actual_time and time_stamp - 3600 <= actual_time < time_stamp + 3600:
                     extracted_data.append({
                         "id": entity_id,
                         "vehicle_id": vehicle_id,
@@ -47,6 +49,8 @@ for i in range(24):
                         "actual_time": actual_time
                     })
 
+    print(f"Successful extraction from: {file_name}")
+    
     time_stamp += 3600
 
 csv_file = "extracted_data.csv"
