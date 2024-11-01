@@ -43,23 +43,23 @@ ax2.set_xlabel("Delay (Minutes)", fontsize=14, color='white')
 ax2.set_ylabel("Frequency", fontsize=14, color='white')
 ax2.grid(color='gray', linestyle='--', linewidth=0.5, alpha=0.7)  
 
-# Pie chart
-bins = np.array([0, 5, 10, 15, 20, max(delays_minutes) + 1])
+# Pie chart with updated bins
+bins = np.array([0, 1, 5, 10, 15, max(delays_minutes) + 1])
 delay_categories = np.histogram(delays_minutes, bins=bins)[0]
-delay_labels = ["0-5", "5-10", "10-15", "15-20", "20+ minutes"]
-explode = [0.1] * len(delay_categories)
+explode = [0.1] * len(delay_categories)  # Add spacing between all segments
 
 ax3.pie(delay_categories, 
-        labels=delay_labels, 
         autopct='%1.1f%%',  
         startangle=90, 
         colors=plt.cm.Paired.colors, 
         explode=explode,
         shadow=True) 
 ax3.axis('equal')  
-ax3.set_title("Percentage of Delays by 5-Minute Intervals", fontsize=16, fontweight='bold', color='white')
+ax3.set_title("Percentage of Delays by Time Intervals", fontsize=16, fontweight='bold', color='white')
 
+# Set background color for entire figure
 fig.patch.set_facecolor('#212121')  
 
 plt.tight_layout()
+plt.savefig("delay_analysis_plot.png", format="png", dpi=300, bbox_inches="tight", facecolor=fig.get_facecolor())
 plt.show()

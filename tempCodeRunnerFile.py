@@ -1,1 +1,1 @@
-plot
+'actual_time', 'scheduled_time', 'vehicle_id'
